@@ -82,3 +82,20 @@ button {
 .carrinho {
   color: #fff;
 }
+
+.carrinho h3 {
+  color: #00FF7F;
+}
+
+.navbar {
+  background: gainsboro;
+}
+
+.input {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.label {
+  color: #00FF7F;
+}

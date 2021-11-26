@@ -3,7 +3,7 @@ import PaginaProduto from "./PaginaProduto";
 import { Link } from 'react-router-dom'
 
 export default (props) => {
-    const { produto, eventoModificar } = props;
+    const { produto } = props;
 
     const handler = (event) => {
         

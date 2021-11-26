@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 const api = axios.create({
     baseURL: "http://localhost:8080/projetofinal/",
@@ -14,7 +15,6 @@ export default (props) => {
         api.get(`/produtos/${id}`).then(pegar);
 
         function pegar(response) {
-            console.log(response.data);
             setProdutos(response.data);
         }
     };
@@ -37,7 +37,7 @@ export default (props) => {
 
             if (result.data?.length > 0) {
                 const pedidoEncontrado = result.data.find((x) => x.cliente?.id == 1);
-                console.dir(pedidoEncontrado)
+
                 if (!pedidoEncontrado) {
                     api.post("/pedidos/adicionar", {
                         "cliente":{
@@ -58,7 +58,7 @@ export default (props) => {
             <h1>Nome do produto</h1>
             <img src="" alt="" />
             <p>Preço do produto</p>
-            <button onClick={adicionarProd}>Adicionar ao carrinho</button>
+            <Link to='/carrinho'><button onClick={adicionarProd}>Adicionar ao carrinho</button></Link>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Possimus quas eveniet, at eum id ducimus nisi dicta excepturi hic 
                 aliquid dignissimos nam rerum distinctio dolores 

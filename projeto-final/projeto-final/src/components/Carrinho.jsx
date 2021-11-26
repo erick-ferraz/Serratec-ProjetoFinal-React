@@ -35,8 +35,6 @@ export default (props) => {
                     <li>Nome do produto: {itemPedido.produto.nome} - Preço R$ {itemPedido.produto.vlUnitario}</li>
                 ))}
                 </ul>
-
-
             </div>
         </div>
     )

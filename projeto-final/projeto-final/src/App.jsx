@@ -4,7 +4,7 @@ import PaginaPrincipal from './components/PaginaPrincipal'
 import PaginaProduto from './components/PaginaProduto';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import Carrinho from './components/Carrinho';
-import BotaoMenu from './components/BotaoMenu';
+import Menu from './components/Menu';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -12,14 +12,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <nav className="navbar">
-          <Link to="/"><BotaoMenu>Home</BotaoMenu></Link> {" ↔️ "}
-          <Link to="/carrinho"><BotaoMenu>Seu carrinho</BotaoMenu></Link>
-        </nav>
+      <Menu/>
         <div className="title"><h1 className="nomeloja">Diógenes Tech-Shop</h1></div>
         <Switch>
           <Route path="/" component={PaginaPrincipal} exact />
-          <Route path="/produtos/:id" component={PaginaProduto} exact />
+          <Route path="/produtos/:id" component={PaginaProduto} exact /> 
           <Route path="/carrinho" component={Carrinho} exact />
         </Switch>
       </BrowserRouter>

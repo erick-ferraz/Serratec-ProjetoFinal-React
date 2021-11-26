@@ -1,28 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router";
-import axios from 'axios';
+import Api from "../Api";
 import { Link } from 'react-router-dom'
-
-const api = axios.create({
-    baseURL: "http://localhost:8080/projetofinal/",
-});
+import BotaoMenu from "./BotaoMenu";
 
 export default (props) => {
     const {id} = useParams();
+//    const { produto } = props;
+    const [produto, setProduto] = React.useState({});
 
-    const chamadaAPI = (props) => {
+    React.useEffect(() => { buscar() }, [])
 
-        api.get(`/produtos/${id}`).then(pegar);
+    function buscar() {
+        Api.get(`produtos/${id}`).then(exibir);
+    }
 
-        function pegar(response) {
-            setProdutos(response.data);
-        }
-    };
-
+    function exibir(response) {
+        setProduto(response.data);
+    }
 
     function adicionarProd () {
         function adicionarItemPedido(idLista) {
-            api.post('/pedidoitens/adicionar', {
+            Api.post('/pedidoitens/adicionar', {
                 "pedido": {
                     "id":idLista
                 },
@@ -33,19 +32,19 @@ export default (props) => {
             })
         } 
 
-        api.get(`/pedidos`).then((result)=> {
+        Api.get(`/pedidos`).then((result)=> {
 
             if (result.data?.length > 0) {
                 const pedidoEncontrado = result.data.find((x) => x.cliente?.id == 1);
 
                 if (!pedidoEncontrado) {
-                    api.post("/pedidos/adicionar", {
+                    Api.post("/pedidos/adicionar", {
                         "cliente":{
                             "id":1
                         }
                     }).then((newPedido)=> {
-                        console.dir(newPedido)});
                         adicionarItemPedido(newPedido.data.id);
+                    });
                 } else {
                     adicionarItemPedido(pedidoEncontrado.id)
                 }
@@ -55,10 +54,10 @@ export default (props) => {
 
     return (
         <div className="pagina-produto">
-            <h1>Nome do produto</h1>
+            <h1>Nome do produto: {produto.nome}</h1>
             <img src="" alt="" />
-            <p>Preço do produto</p>
-            <Link to='/carrinho'><button onClick={adicionarProd}>Adicionar ao carrinho</button></Link>
+            <h3>Preço: R$ {produto.vlUnitario}</h3>
+            <Link to='/carrinho'><BotaoMenu onClick={adicionarProd}>Adicionar ao carrinho</BotaoMenu></Link>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                 Possimus quas eveniet, at eum id ducimus nisi dicta excepturi hic 
                 aliquid dignissimos nam rerum distinctio dolores 

@@ -1,19 +1,25 @@
 import React from "react";
+import BotaoMenu from "./BotaoMenu";
+import { Link } from "react-router-dom";
 
 class Menu extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { algum: estado };
+        this.state = {};
       }
 
       manipulador = () => {
-        let novo = {
-          contador: this.state.contador + 1,
-        };
         this.setState(novo);
       };
 
       render() {
-        return <h1>Teste</h1>
+        return (
+          <nav className="navbar">
+          <Link to="/"><BotaoMenu>Home</BotaoMenu></Link> {" ↔️ "}
+          <Link to="/carrinho"><BotaoMenu>Seu carrinho</BotaoMenu></Link>
+          </nav>
+        )
       }
 }
+
+export default Menu;

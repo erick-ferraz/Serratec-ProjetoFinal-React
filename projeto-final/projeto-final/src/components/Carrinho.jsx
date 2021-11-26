@@ -1,9 +1,5 @@
 import React from "react";
-import axios from 'axios';
-
-const api = axios.create({
-    baseURL: "http://localhost:8080/projetofinal/",
-});
+import Api from "../Api";
 
 export default (props) => {
     const [ItensPedido, setItensPedido] = React.useState([]);
@@ -12,7 +8,7 @@ export default (props) => {
 
     const chamadaAPI = (props) => {
 
-        api.get(`/pedidos`).then((result)=> {
+        Api.get(`/pedidos`).then((result)=> {
 
             if (result.data?.length > 0) {
                 const pedidoEncontrado = result.data.find((pedido) => pedido.cliente?.id == 1);
@@ -32,7 +28,7 @@ export default (props) => {
                 <p>Produtos: </p>
                 <ul>
                 {ItensPedido.map((itemPedido) => (
-                    <li>Nome do produto: {itemPedido.produto.nome} - Preço R$ {itemPedido.produto.vlUnitario}</li>
+                    <li key={itemPedido.id}>Nome do produto: {itemPedido.produto.nome} - Preço R$ {itemPedido.produto.vlUnitario}</li>
                 ))}
                 </ul>
             </div>

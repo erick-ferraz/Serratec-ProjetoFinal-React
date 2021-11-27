@@ -17,6 +17,7 @@ class Menu extends React.Component {
           <nav className="navbar">
           <Link to="/"><BotaoMenu>Home</BotaoMenu></Link> {" ↔️ "}
           <Link to="/carrinho"><BotaoMenu>Seu carrinho</BotaoMenu></Link>
+         
           </nav>
         )
       }

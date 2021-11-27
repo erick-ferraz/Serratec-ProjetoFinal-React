@@ -2,7 +2,6 @@ import React from "react";
 import PaginaProduto from "./PaginaProduto";
 import { Link } from 'react-router-dom'
 import BotaoMenu from "./BotaoMenu";
-
 export default (props) => {
     const { produto } = props;
 

@@ -18,6 +18,7 @@ export default () => {
 
     return (
         <div className="PaginaPrincipal">
+           
             <div className="productList">
                 {listaProdutos.map((produto) => (
                     <Produto
@@ -25,6 +26,7 @@ export default () => {
                         produto={produto}
                         className="produto"
                     />))}
+                    
             </div>
         </div>
     )

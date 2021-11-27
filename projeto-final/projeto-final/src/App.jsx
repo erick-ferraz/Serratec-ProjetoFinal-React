@@ -16,9 +16,11 @@ function App() {
       <Menu/>
         <div className="title"><h1 className="nomeloja">Diógenes Tech-Shop</h1></div>
         <Switch>
+        
           <Route path="/" component={PaginaPrincipal} exact />
           <Route path="/produtos/:id" component={PaginaProduto} exact /> 
           <Route path="/carrinho" component={Carrinho} exact />
+  
         </Switch>
       </BrowserRouter>
       <header className="App-header">

@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="App">
-      Git é muito legal
+      
       <BrowserRouter>
       <Menu/>
         <div className="title"><h1 className="nomeloja">Diógenes Tech-Shop</h1></div>
